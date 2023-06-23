@@ -83,6 +83,10 @@ def LangInfo : CIR_Attr<"LangInfo", "lang"> {
     bool isCXX() const { return getLang() == SourceLanguage::CXX; };
     bool isCStd() const;
     bool isCXXStd() const;
+
+    bool hasNoProtoDecls() const {
+      return !isCXX() && getStd() != LangStandard::C2X;
+    };
   }];
 }
 
